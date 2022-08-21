@@ -1,8 +1,6 @@
 
 ##christopher Robles
-##CS26
-#Hw 1
-#Don't change batch size
+
 batch_size = 64
 
 from torch.utils.data.sampler import SubsetRandomSampler

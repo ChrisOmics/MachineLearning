@@ -1,7 +1,5 @@
 
-##christopher Robles
-
-batch_size = 64
+# MNIST digits classification using logistic regression and SVM loss in pytorch
 
 from torch.utils.data.sampler import SubsetRandomSampler
 import torch
@@ -12,7 +10,7 @@ from torchvision import datasets, transforms
 torch.manual_seed(0)
 
 
-## USE THIS SNIPPET TO GET BINARY TRAIN/TEST DATA
+## GET BINARY TRAIN/TEST DATA
 
 train_data = datasets.MNIST('./data/', train=True, download=True,
                    transform=transforms.Compose([
@@ -33,7 +31,7 @@ subset_indices = ((test_data.test_labels == 0) + (test_data.test_labels == 1)).n
 test_loader = torch.utils.data.DataLoader(test_data,batch_size=batch_size, shuffle=False,sampler=SubsetRandomSampler(subset_indices))
 
 
-# Same as linear regression! 
+# Same as linear regression!
 class LogisticRegressionModel(nn.Module):
     def __init__(self, input_dim, output_dim):
         super(LogisticRegressionModel, self).__init__()
@@ -71,7 +69,6 @@ def run_model(num_epochs, learning_rate, loss_function, momentum):
     #run with and without momentem (between .9 and 0.99)
     optimizer = torch.optim.SGD(model.parameters(),lr=learning_rate, momentum=momentum)
     # Training the Model
-    # Notice that newest Pytorch merge tensor and variable, so the additional Variable wrapping is no longer required.
 #    num_epochs=10
     epoch_iter = 0
     correct=0
